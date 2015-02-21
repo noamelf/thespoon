@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block blog_entries %}
+<div class="post">
+    <h2>{{ flatpage.title }}</h2>
+
+    {{ flatpage.content | markdown }}
+</div>
+{% endblock %}
