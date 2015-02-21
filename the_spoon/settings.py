@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+SITE_ID = 1
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -87,7 +88,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-SITE_ID = 1
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
