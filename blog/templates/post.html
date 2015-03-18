@@ -1,13 +1,39 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load django_markdown %}
 
-{% block blog_entries %}
-  <div class="post">
-    <h2><a href="{% url "entry_detail" slug=object.slug %}">{{ object.title }}</a></h2>
-    <p class="meta">
-      {{ object.created }} |
-      Tagged under {{  object.tags.all|join:", " }}
-    </p>
-    {{ object.body|markdown }}
-  </div>
+{% block page_header %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('{% static 'img/post-bg.jpg' %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ object.title }}</h1>
+
+                        <h2 class="subheading">Need to add</h2>
+                        <span class="meta">Posted on {{ object.created }} |
+                            Tagged under {{ object.tags.all|join:", " }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 {% endblock %}
+
+{% block page_body %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {{ object.body|markdown }}
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+{% endblock %}
+
