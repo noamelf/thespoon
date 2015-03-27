@@ -16,6 +16,7 @@ class Tag(models.Model):
 
 class Entry(models.Model):
     title = models.CharField(max_length=200)
+    # subtitle = models.CharField(max_length=200)
     body = models.TextField()
     slug = models.SlugField(max_length=200, unique=True)
     publish = models.BooleanField(default=False)
