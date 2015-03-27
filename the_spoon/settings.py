@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 SITE_ID = 1
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -26,9 +27,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'blog',
-    'django_markdown'
+    'django_markdown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,13 +58,24 @@ WSGI_APPLICATION = 'the_spoon.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+#postgres://tmlwteehaoxbmk:Y8KAtCSqK0TBUVJmYHYnBQdiHS@ec2-23-21-231-14.compute-1.amazonaws.com:5432/d8f2iehd3ronjf
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8f2iehd3ronjf',
+        'USER': 'tmlwteehaoxbmk',
+        'PASSWORD': 'Y8KAtCSqK0TBUVJmYHYnBQdiHS',
+        'HOST': 'ec2-23-21-231-14.compute-1.amazonaws.com', # Or something like this
+        'PORT': '5432',
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -89,23 +98,23 @@ STATIC_URL = '/static/'
 
 
 # Parse database configuration from $DATABASE_URL
-# import dj_database_url
-#
+import dj_database_url
+
 # DATABASES['default'] = dj_database_url.config()
-#
-# # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#
-# # Allow all host headers
-# ALLOWED_HOSTS = ['*']
-#
-# # Static asset configuration
-# import os
-#
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = 'staticfiles'
-# STATIC_URL = '/static/'
-#
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
