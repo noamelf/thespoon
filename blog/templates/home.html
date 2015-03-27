@@ -4,52 +4,52 @@
 
 
 {% block page_header %}
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>The spoon</h1>
-                    <hr class="small">
-                    <span class="subheading">Thoughts about software and philosophy</span>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>The spoon</h1>
+                        <hr class="small">
+                        <span class="subheading">Thoughts about software and philosophy</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 {% endblock %}
 
 {% block page_body %}
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            {% for object in object_list %}
-            <div class="post-preview">
-                <a href="{% url " entry_detail" slug=object.slug %}">
-                <h2 class="post-title">
-                    {{ object.title }}
-                </h2>
-                </a>
-                <!--<h3 class="post-subtitle">-->
-                <!--{{ object.body|markdown }}-->
-                <!--</h3>-->
-                <p>
-                    {{ object.body|markdown }}
-                </p>
-                <p class="post-meta">{{ object.created }}</p>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for object in object_list %}
+                    <div class="post-preview">
+                        <a href="{% url "entry_detail" slug=object.slug %}">
+                            <h2 class="post-title">
+                                {{ object.title }}
+                            </h2>
+                        </a>
+                        <!--<h3 class="post-subtitle">-->
+                            <!--{{ object.body|markdown }}-->
+                        <!--</h3>-->
+                        <p>
+                            {{ object.body|markdown }}
+                        </p>
+                        <p class="post-meta">{{ object.created }}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
             </div>
-            <hr>
-            {% endfor %}
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
-                </li>
-            </ul>
         </div>
     </div>
-</div>
 {% endblock %}
