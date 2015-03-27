@@ -59,16 +59,16 @@ WSGI_APPLICATION = 'the_spoon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 #postgres://tmlwteehaoxbmk:Y8KAtCSqK0TBUVJmYHYnBQdiHS@ec2-23-21-231-14.compute-1.amazonaws.com:5432/d8f2iehd3ronjf
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd8f2iehd3ronjf',
-        'USER': 'tmlwteehaoxbmk',
-        'PASSWORD': 'Y8KAtCSqK0TBUVJmYHYnBQdiHS',
-        'HOST': 'ec2-23-21-231-14.compute-1.amazonaws.com', # Or something like this
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd8f2iehd3ronjf',
+#         'USER': 'tmlwteehaoxbmk',
+#         'PASSWORD': 'Y8KAtCSqK0TBUVJmYHYnBQdiHS',
+#         'HOST': 'ec2-23-21-231-14.compute-1.amazonaws.com', # Or something like this
+#         'PORT': '5432',
+#     }
+# }
 #
 # DATABASES = {
 #     'default': {
@@ -76,6 +76,9 @@ DATABASES = {
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+import dj_database_url
+DATABASES = dict(default=dj_database_url.config())
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -98,7 +101,7 @@ STATIC_URL = '/static/'
 
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
+# import dj_database_url
 
 # DATABASES['default'] = dj_database_url.config()
 
