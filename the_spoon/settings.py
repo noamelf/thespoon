@@ -5,8 +5,8 @@ SITE_ID = 1
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+CLICKY_SITE_ID = os.environ.get('CLICKY_SITE_ID')
 
 DEBUG = True
 
@@ -20,8 +20,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'blog',
     'django_markdown',
+    'blog',
+    'analytical',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,3 +61,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'blog/static'),
 )
+
