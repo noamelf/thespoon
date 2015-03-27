@@ -6,7 +6,7 @@ SITE_ID = 1
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2ybb65l!x_d4kxc6ewl9%9ocd33vom5_+1ox816_*(fju4uhk1'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
